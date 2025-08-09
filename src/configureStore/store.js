@@ -8,8 +8,8 @@ const initialState = {
         avatar: 'https://gravatar.com/avatar/000?d=monsterid'
     },
     stats: {
-        followers: 42,
-        followings: 10
+        followers: 0,
+        followings: 0
     }
 
 }

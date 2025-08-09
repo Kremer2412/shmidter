@@ -1,10 +1,12 @@
 import Avatar from "./Avatar.jsx";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {changeFollowersDown, changeFollowersUp, changeFollowingDown, changeFollowingUp} from "../actions/userActions.js";
 
 
 const Stats = () => {
-   const {follower, following} = useSelector(state => state.stats);
+   const {followers, followings} = useSelector(state => state.stats);
    const {name} = useSelector(state => state.user);
+   const dispatch = useDispatch();
 
     return (
         <div className={'user-stats'}>
@@ -13,8 +15,25 @@ const Stats = () => {
                 {name}
             </div>
             <div className={'stats'}>
-                <div>Followers: {follower}</div>
-                <div>Following: {following}</div>
+                <div
+                    onClick={() => dispatch(changeFollowersUp())}
+                    onContextMenu={(e) => {
+                        e.preventDefault();
+                        dispatch(changeFollowersDown());
+                    }}
+                >
+                    Followers: {followers}
+                </div>
+
+                <div
+                    onClick={() => dispatch(changeFollowingUp())}
+                    onContextMenu={(e) => {
+                        e.preventDefault();
+                        dispatch(changeFollowingDown());
+                    }}
+                >
+                    Following: {followings}
+                </div>
             </div>
         </div>
     );

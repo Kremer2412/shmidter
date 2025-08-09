@@ -1,7 +1,5 @@
-
-
 import {useDispatch, useSelector} from "react-redux";
-import {changeAvatar} from "../actions/userActions.js";
+import {changeAvatar, changeName} from "../actions/userActions.js";
 
 const Avatar = ({size}) => {
     const {avatar, name} = useSelector(state => state.user);
@@ -12,6 +10,11 @@ const Avatar = ({size}) => {
             onClick={() => {
                 const url = prompt('Enter new avatar url');
                 dispatch(changeAvatar(url));
+            }}
+            onContextMenu={(e) => {
+                e.preventDefault();
+                const name = prompt('Enter name');
+                dispatch(changeName(name))
             }}
             className={`user-avatar ${size ?? ''}`}
             src={avatar}
