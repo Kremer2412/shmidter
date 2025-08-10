@@ -1,5 +1,6 @@
 import {legacy_createStore as createStore} from "redux";
-import {shmidterReducer} from "../reducers/shmidterReducer.js";
+import {rootReducer} from "../reducers/rootReducer.js";
+
 
 
 const initialState = {
@@ -13,4 +14,4 @@ const initialState = {
     }
 
 }
-export const store = createStore(shmidterReducer, initialState);
+export const store = createStore(rootReducer, initialState);
